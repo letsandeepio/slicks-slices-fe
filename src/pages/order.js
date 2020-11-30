@@ -1,9 +1,10 @@
 import React from 'react';
+import Layout from '../components/Layout';
 
 const OrderPages = () => (
-  <div>
+  <>
     <p>Hey I am a order page!</p>
-  </div>
+  </>
 );
 
 export default OrderPages;

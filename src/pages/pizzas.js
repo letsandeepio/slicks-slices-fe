@@ -1,9 +1,10 @@
 import React from 'react';
+import Layout from '../components/Layout';
 
 const PizzasPage = () => (
-  <div>
+  <>
     <p>Hey I am Pizzas Page</p>
-  </div>
+  </>
 );
 
 export default PizzasPage;
