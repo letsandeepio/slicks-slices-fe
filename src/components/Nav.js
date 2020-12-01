@@ -10,6 +10,7 @@ const NavStyles = styled.nav`
   }
   ul {
     margin: 0;
+    margin-top: -6rem;
     padding: 0;
     list-style: none;
     text-align: center;
