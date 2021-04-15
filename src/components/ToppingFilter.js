@@ -38,7 +38,7 @@ const countPizzasInToppings = (pizzas) => {
         acc[topping.id] = {
           id: topping.id,
           name: topping.name,
-          count: 1
+          count: 1,
         };
       }
 
@@ -71,8 +71,6 @@ const ToppingFilter = () => {
       }
     }
   `);
-  console.clear();
-  // console.log({ toppings, pizzas });
   const toppingsWithCounts = countPizzasInToppings(pizzas.nodes);
   return (
     <ToppingsStyles>
