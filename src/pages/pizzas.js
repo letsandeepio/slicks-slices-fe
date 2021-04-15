@@ -1,9 +1,11 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 import PizzaList from '../components/PizzaList';
+import ToppingFilter from '../components/ToppingFilter';
 
 const PizzasPage = ({ data }) => (
   <>
+    <ToppingFilter />
     <p>There are {data.pizzas.nodes.length} pizzas</p>
     <PizzaList pizzas={data.pizzas.nodes} />
   </>
