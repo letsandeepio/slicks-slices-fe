@@ -20,13 +20,15 @@ const ToppingsStyles = styled.div`
       background: white;
       padding: 2px 5px;
     }
-    .active {
+    &[aria-current='page'] {
       background: var(--yellow);
     }
   }
 `;
 
 const countPizzasInToppings = (pizzas) => {
+  console.log(pizzas);
+
   const counts = pizzas
     .map((pizza) => pizza.toppings)
     .flat()
@@ -38,12 +40,14 @@ const countPizzasInToppings = (pizzas) => {
         acc[topping.id] = {
           id: topping.id,
           name: topping.name,
-          count: 1,
+          count: 1
         };
       }
 
       return acc;
     }, {});
+
+  console.log(counts);
 
   const sortedToppings = Object.values(counts).sort(
     (a, b) => b.count - a.count
@@ -51,7 +55,7 @@ const countPizzasInToppings = (pizzas) => {
   return sortedToppings;
 };
 
-const ToppingFilter = () => {
+const ToppingFilter = ({ activeTopping }) => {
   const { toppings, pizzas } = useStaticQuery(graphql`
     query {
       toppings: allSanityTopping {
@@ -74,8 +78,16 @@ const ToppingFilter = () => {
   const toppingsWithCounts = countPizzasInToppings(pizzas.nodes);
   return (
     <ToppingsStyles>
+      <Link to="/pizzas">
+        <span className="name">All</span>
+        <span className="count">{pizzas.nodes.length}</span>
+      </Link>
       {toppingsWithCounts.map((topping) => (
-        <Link to={`/topping/${topping.name}`} key={topping.id}>
+        <Link
+          to={`/topping/${topping.name}`}
+          key={topping.id}
+          
+        >
           <span className="name">{topping.name}</span>
           <span className="count">{topping.count}</span>
         </Link>
