@@ -26,8 +26,8 @@ const turnPizzasIntoPages = async ({ graphql, actions }) => {
       path: `pizza/${pizza.slug.current}`,
       component: pizzaTemplate,
       context: {
-        slug: pizza.slug.current
-      }
+        slug: pizza.slug.current,
+      },
     });
   });
 };
@@ -53,8 +53,8 @@ const turnToppingsIntoPages = async ({ graphql, actions }) => {
       path: `topping/${topping.name}`,
       component: toppingTemplate,
       context: {
-        topping: topping.name
-      }
+        topping: topping.name,
+      },
     });
   });
 };
@@ -62,7 +62,7 @@ const turnToppingsIntoPages = async ({ graphql, actions }) => {
 const fetchBeersAndTurnIntoNodes = async ({
   actions,
   createNodeId,
-  createContentDigest
+  createContentDigest,
 }) => {
   console.log('====turning beers into pages====');
   const res = await fetch('https://api.sampleapis.com/beers/ale');
@@ -76,12 +76,12 @@ const fetchBeersAndTurnIntoNodes = async ({
       internal: {
         type: 'Beer',
         mediaType: 'application/json',
-        contentDigest: createContentDigest(beer)
-      }
+        contentDigest: createContentDigest(beer),
+      },
     };
     actions.createNode({
       ...beer,
-      ...nodeMeta
+      ...nodeMeta,
     });
   }
 };
@@ -93,6 +93,6 @@ export const sourceNodes = async (params) => {
 export const createPages = async (params) => {
   await Promise.all([
     turnPizzasIntoPages(params),
-    turnToppingsIntoPages(params)
+    turnToppingsIntoPages(params),
   ]);
 };
