@@ -1,5 +1,28 @@
 import { Link } from 'gatsby';
 import React from 'react';
+import styled from 'styled-components';
+
+const PaginationStyles = styled.div`
+  display: flex;
+  align-content: space-between;
+  align-items: center;
+  justify-items: center;
+  justify-content: space-around;
+  padding: 5px;
+  border: solid 1px var(--grey);
+  border-radius: 4px;
+  & > * {
+    text-decoration: none;
+    &[aria-current],
+    &.current {
+      color: var(--red);
+    }
+    &[disabled] {
+      pointer-events: none;
+      color: var(--grey);
+    }
+  }
+`;
 
 const Pagination = ({ pageSize, totalCount, currentPage, skip, base }) => {
   const totalPages = Math.ceil(totalCount / pageSize);
@@ -10,7 +33,7 @@ const Pagination = ({ pageSize, totalCount, currentPage, skip, base }) => {
   const hasPrevPage = prevPage >= 1;
 
   return (
-    <div>
+    <PaginationStyles>
       <Link disabled={!hasPrevPage} to={`/${base}/${prevPage}`}>
         ⟵ Prev
       </Link>
@@ -22,7 +45,7 @@ const Pagination = ({ pageSize, totalCount, currentPage, skip, base }) => {
       <Link disabled={!hasNextPage} to={`/${base}/${nextPage}`}>
         Next ⟶
       </Link>
-    </div>
+    </PaginationStyles>
   );
 };
 
