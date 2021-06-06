@@ -26,7 +26,6 @@ const PaginationStyles = styled.div`
 
 const Pagination = ({ pageSize, totalCount, currentPage, skip, base }) => {
   const totalPages = Math.ceil(totalCount / pageSize);
-  console.log(currentPage);
   const prevPage = currentPage - 1;
   const nextPage = currentPage + 1;
   const hasNextPage = nextPage <= totalPages;
