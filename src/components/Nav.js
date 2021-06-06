@@ -20,6 +20,7 @@ const NavStyles = styled.nav`
     align-items: center;
   }
   li {
+    cursor: pointer;
     --rotate: -2deg;
     transform: rotate(var(--rotate));
     order: 1;
@@ -37,14 +38,14 @@ const NavStyles = styled.nav`
     }
     &:hover {
       --rotate: 3deg;
+      color: var(--red);
     }
   }
   a {
     font-size: 3rem;
     text-decoration: none;
-    &:hover {
-      color: var(--red);
-    }
+    color: inherit;
+    cursor: inherit;
   }
 `;
 
