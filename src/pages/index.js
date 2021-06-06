@@ -2,7 +2,7 @@ import React from 'react';
 
 const HomePage = () => (
   <>
-    <p>This is working!</p>
+    <p>Welcome to the home page of Slicks Slices</p>
   </>
 );
 

@@ -26,8 +26,8 @@ const turnPizzasIntoPages = async ({ graphql, actions }) => {
       path: `pizza/${pizza.slug.current}`,
       component: pizzaTemplate,
       context: {
-        slug: pizza.slug.current
-      }
+        slug: pizza.slug.current,
+      },
     });
   });
 };
@@ -53,8 +53,8 @@ const turnToppingsIntoPages = async ({ graphql, actions }) => {
       path: `topping/${topping.name}`,
       component: toppingTemplate,
       context: {
-        topping: topping.name
-      }
+        topping: topping.name,
+      },
     });
   });
 };
@@ -62,7 +62,7 @@ const turnToppingsIntoPages = async ({ graphql, actions }) => {
 const fetchBeersAndTurnIntoNodes = async ({
   actions,
   createNodeId,
-  createContentDigest
+  createContentDigest,
 }) => {
   console.log('====turning beers into pages====');
   const res = await fetch('https://api.sampleapis.com/beers/ale');
@@ -75,12 +75,12 @@ const fetchBeersAndTurnIntoNodes = async ({
       internal: {
         type: 'Beer',
         mediaType: 'application/json',
-        contentDigest: createContentDigest(beer)
-      }
+        contentDigest: createContentDigest(beer),
+      },
     };
     actions.createNode({
       ...beer,
-      ...nodeMeta
+      ...nodeMeta,
     });
   }
 };
@@ -105,6 +105,21 @@ const turnSliceMastersIntoPages = async ({ graphql, actions }) => {
   console.log(
     `There are ${data.slicemasters.totalCount} and we have ${pageCount} pages with ${pageSize} per page to display.`
   );
+
+  Array.from({ length: pageCount }).forEach((_, i) => {
+    const currentPage = i + 1;
+    console.log(`Creating page: ${currentPage}`);
+    actions.createPage({
+      path: `/slicemasters/${i + 1}`,
+      component: path.resolve('./src/pages/slicemasters.js'),
+      // this data is passed to the template when we create it
+      context: {
+        skip: i * pageSize,
+        currentPage,
+        pageSize,
+      },
+    });
+  });
 };
 
 export const sourceNodes = async (params) => {
@@ -115,6 +130,6 @@ export const createPages = async (params) => {
   await Promise.all([
     turnPizzasIntoPages(params),
     turnToppingsIntoPages(params),
-    turnSliceMastersIntoPages(params)
+    turnSliceMastersIntoPages(params),
   ]);
 };
