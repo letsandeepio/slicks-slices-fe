@@ -12,7 +12,7 @@ const PizzaGridStyles = styled.div`
 
 const PizzaStyles = styled.div`
   display: grid;
-  /* take your rizing not from pizzastyles div, but from the PizzGridStyles grid */
+  /* take your sizing not from pizzastyles div, but from the PizzGridStyles grid */
   @supports not (grid-template-rows: subgrid) {
     --rows: auto auto 1fr;
   }
