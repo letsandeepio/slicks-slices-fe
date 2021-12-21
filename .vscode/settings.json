@@ -13,26 +13,31 @@
     "activityBarBadge.foreground": "#e7e7e7",
     "statusBar.background": "#ffc600",
     "statusBar.foreground": "#15202b",
-    "statusBarItem.hoverBackground": "#cc9e00"
+    "statusBarItem.hoverBackground": "#cc9e00",
+    "sash.hoverBorder": "#ffd133",
+    "statusBarItem.remoteBackground": "#ffc600",
+    "statusBarItem.remoteForeground": "#15202b"
   },
   // These are all my auto-save configs
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
   // turn it off for JS and JSX, we will do this via eslint
   "[javascript]": {
-    "editor.formatOnSave": true
+    "editor.formatOnSave": false,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[javascriptreact]": {
-    "editor.formatOnSave": true
+    "editor.formatOnSave": false
   },
   // tell the ESLint plugin to run on save
   "editor.codeActionsOnSave": {
-    "source.fixAll": true
+    "source.fixAll": false
   },
+  
+   "emmet.includeLanguages": {
+      "javascript": "javascriptreact"
+   }
+,
   // Optional BUT IMPORTANT: If you have the prettier extension enabled for other languages like CSS and HTML, turn it off for JS since we are doing it through Eslint already
   "peacock.color": "#FFC600",
-  "cSpell.words": [
-    "pizzastyles",
-    "slicemaster",
-    "slicemasters"
-  ],
+  "cSpell.words": ["pizzastyles", "slicemaster", "slicemasters"]
 }

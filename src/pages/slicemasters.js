@@ -53,7 +53,7 @@ const SliceMastersPage = ({ data, pageContext }) => {
       <SliceMasterGrid>
         {slicemasters.map((slicemaster) => (
           <SliceMasterStyles key={slicemaster.id}>
-            <Link to={`/slicemasters/${slicemaster.slug.current}`}>
+            <Link to={`/slicemaster/${slicemaster.slug.current}`}>
               <h2>
                 <span className="mark">{slicemaster.name}</span>
               </h2>
