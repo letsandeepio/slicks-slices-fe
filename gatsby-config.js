@@ -6,8 +6,10 @@ export default {
     title: 'Slicks Slices - Pizza',
     siteUrl: 'http://gatsby.pizza',
     description: 'best pizza in toronto',
+    twitter: '@letsandeepio',
   },
   plugins: [
+    'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
     {
       resolve: 'gatsby-source-sanity',

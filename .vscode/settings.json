@@ -2,20 +2,20 @@
   "workbench.colorCustomizations": {
     "titleBar.activeForeground": "#15202b",
     "titleBar.inactiveForeground": "#15202b99",
-    "titleBar.activeBackground": "#ffc600",
-    "titleBar.inactiveBackground": "#ffc60099",
-    "activityBar.activeBackground": "#ffd133",
-    "activityBar.activeBorder": "#009f7b",
-    "activityBar.background": "#ffd133",
+    "titleBar.activeBackground": "#42b883",
+    "titleBar.inactiveBackground": "#42b88399",
+    "activityBar.activeBackground": "#65c89b",
+    "activityBar.activeBorder": "#945bc4",
+    "activityBar.background": "#65c89b",
     "activityBar.foreground": "#15202b",
     "activityBar.inactiveForeground": "#15202b99",
-    "activityBarBadge.background": "#009f7b",
+    "activityBarBadge.background": "#945bc4",
     "activityBarBadge.foreground": "#e7e7e7",
-    "statusBar.background": "#ffc600",
+    "statusBar.background": "#42b883",
     "statusBar.foreground": "#15202b",
-    "statusBarItem.hoverBackground": "#cc9e00",
-    "sash.hoverBorder": "#ffd133",
-    "statusBarItem.remoteBackground": "#ffc600",
+    "statusBarItem.hoverBackground": "#359268",
+    "sash.hoverBorder": "#65c89b",
+    "statusBarItem.remoteBackground": "#42b883",
     "statusBarItem.remoteForeground": "#15202b"
   },
   // These are all my auto-save configs
@@ -38,6 +38,6 @@
    }
 ,
   // Optional BUT IMPORTANT: If you have the prettier extension enabled for other languages like CSS and HTML, turn it off for JS since we are doing it through Eslint already
-  "peacock.color": "#FFC600",
+  "peacock.color": "#42b883",
   "cSpell.words": ["pizzastyles", "slicemaster", "slicemasters"]
 }
