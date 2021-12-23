@@ -6,6 +6,7 @@ import PizzaOrder from '../components/PizzaOrder';
 import SEO from '../components/SEO';
 import MenuItemStyles from '../styles/MenuItemStyles';
 import { OrderStyles } from '../styles/OrderStyles';
+import calculateOrderTotal from '../utils/calculateOrderTotal';
 import calculatePizzaPrice from '../utils/calculatePizzaPrice';
 import formatMoney from '../utils/formatMoney';
 import useForm from '../utils/useForm';
@@ -80,6 +81,12 @@ const OrderPage = ({ data }) => {
             removeFromOrder={removeFromOrder}
             pizzas={pizzas}
           />
+        </fieldset>
+        <fieldset>
+          <h3>
+            Your total is {formatMoney(calculateOrderTotal(order, pizzas))}
+          </h3>
+          <button type="submit">Order Ahead</button>
         </fieldset>
       </OrderStyles>
     </>
