@@ -68,6 +68,7 @@ const fetchBeersAndTurnIntoNodes = async ({
   const res = await fetch('https://api.sampleapis.com/beers/ale');
   const beers = await res.json();
   for (const beer of beers) {
+    if (!beer.rating.average) return;
     const nodeMeta = {
       id: createNodeId(`beers-${beer.name}`),
       parent: null,
@@ -102,7 +103,6 @@ const turnSliceMastersIntoPages = async ({ graphql, actions }) => {
   `);
 
   data.slicemasters.nodes.forEach((slicemaster) => {
-    console.log(slicemaster);
     actions.createPage({
       component: resolve('./src/templates/Slicemaster.js'),
       path: `/slicemaster/${slicemaster.slug.current}`,
