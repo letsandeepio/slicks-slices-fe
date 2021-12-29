@@ -1,7 +1,8 @@
 const dotenv = require('dotenv');
 
 dotenv.config({ path: '.env' });
-export default {
+
+module.exports = {
   siteMetadata: {
     title: 'Slicks Slices - Pizza',
     siteUrl: 'http://gatsby.pizza',
