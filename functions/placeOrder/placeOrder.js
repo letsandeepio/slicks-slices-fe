@@ -29,56 +29,37 @@ const generateOrderEmail = ({ order, total }) =>
   </style>
   </div>`;
 
-const wait = async (ms = 0) =>
-  new Promise((resolve, reject) => setTimeout(resolve, ms));
-
-exports.handler = async (event, context) => {
-  const body = JSON.parse(event.body);
+module.exports = async (req, res) => {
+  const { body } = req;
 
   const requiredFields = ['email', 'name', 'order'];
   const { order, total, name, email, mapleSyrup } = body;
 
   if (mapleSyrup) {
-    return {
-      statusCode: 400,
-      body: JSON.stringify({ message: 'Boop beep bop zzzsstt good bye' }),
-    };
+    return res.status(400).json({ message: 'Boop beep bop zzzsstt good bye' });
   }
 
   for (const field of requiredFields) {
     console.log(`Checking that ${field} is good`);
     if (!body[field]) {
-      return {
-        statusCode: 400,
-        body: JSON.stringify({
-          message: `Oops! You are missing the ${field} field.`,
-        }),
-      };
+      return res
+        .status(400)
+        .json({ message: `Oops! You are missing the ${field} field.` });
     }
   }
 
   if (body.order.length <= 0) {
-    return {
-      statusCode: 400,
-      body: JSON.stringify({
-        message: `Oops! The order is empty.`,
-      }),
-    };
+    return res.status(400).json({ message: `Oops! The order is empty.` });
   }
 
   const html = generateOrderEmail({ order, total });
 
-  console.log(html);
-
-  const info = await transporter.sendMail({
+  await transporter.sendMail({
     from: 'Slicks Slices <slick@example.com>',
     to: `${name} <${email}>`,
     subject: 'New Order!',
     html,
   });
 
-  return {
-    statusCode: 200,
-    body: JSON.stringify({ message: 'Success!' }),
-  };
+  return res.status(400).json({ message: 'Success!' });
 };

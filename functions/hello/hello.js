@@ -1,4 +1,1 @@
-exports.handler = async (event, context) => ({
-  statusCode: 200,
-  body: 'Hello!',
-});
+module.exports = async (req, res) => res.status(200).send('Hello World');
