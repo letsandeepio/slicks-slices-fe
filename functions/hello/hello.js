@@ -1,1 +1,2 @@
-module.exports = async (req, res) => res.status(200).send('Hello World');
+module.exports = async (req, res) =>
+  res.status(200).send('Hello World! Bonjour');
