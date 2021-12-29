@@ -34,6 +34,7 @@ export default function usePizza({ pizzas, values }) {
       total: formatMoney(calculateOrderTotal(order, pizzas)),
       name: values.name,
       email: values.email,
+      mapleSyrup: values.mapleSyrup,
     };
 
     console.log(process.env.GATSBY_SERVERLESS_BASE);

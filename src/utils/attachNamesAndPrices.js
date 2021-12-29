@@ -1,4 +1,5 @@
 import calculatePizzaPrice from './calculatePizzaPrice';
+import formatMoney from './formatMoney';
 
 const attachNamesAndPrices = (order, pizzas) =>
   order.map((item) => {
@@ -7,7 +8,7 @@ const attachNamesAndPrices = (order, pizzas) =>
       ...item,
       name: pizza.name,
       thumbnail: pizza.image.asset.fluid.src,
-      price: calculatePizzaPrice(pizza.price, item.size),
+      price: formatMoney(calculatePizzaPrice(pizza.price, item.size)),
     };
   });
 

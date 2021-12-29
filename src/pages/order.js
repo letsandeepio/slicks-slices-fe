@@ -16,6 +16,7 @@ const OrderPage = ({ data }) => {
   const { values, updateValues } = useForm({
     name: '',
     email: '',
+    mapleSyrup: '',
   });
 
   const pizzas = data.pizzas.nodes;
@@ -39,7 +40,7 @@ const OrderPage = ({ data }) => {
     <>
       <SEO title="Order a Pizza" />
       <OrderStyles onSubmit={submitOrder}>
-        <fieldset>
+        <fieldset disabled={loading}>
           <legend>Your info</legend>
           <label htmlFor="name">Name</label>
           <input
@@ -57,8 +58,17 @@ const OrderPage = ({ data }) => {
             value={values.email}
             onChange={updateValues}
           />
+
+          <input
+            type="text"
+            name="mapleSyrup"
+            id="mapleSyrup"
+            value={values.mapleSyrup}
+            onChange={updateValues}
+            className="mapleSyrup"
+          />
         </fieldset>
-        <fieldset className="menu">
+        <fieldset className="menu" disabled={loading}>
           <legend>Menu</legend>
           {pizzas.map((pizza) => (
             <MenuItemStyles key={pizza.id}>
@@ -85,7 +95,7 @@ const OrderPage = ({ data }) => {
             </MenuItemStyles>
           ))}
         </fieldset>
-        <fieldset className="order">
+        <fieldset className="order" disabled={loading}>
           <legend>Order</legend>
           <PizzaOrder
             order={order}
@@ -93,7 +103,7 @@ const OrderPage = ({ data }) => {
             pizzas={pizzas}
           />
         </fieldset>
-        <fieldset>
+        <fieldset disabled={loading}>
           <h3>
             Your total is {formatMoney(calculateOrderTotal(order, pizzas))}
           </h3>
