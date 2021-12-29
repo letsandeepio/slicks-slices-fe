@@ -27,34 +27,39 @@ export default function usePizza({ pizzas, values }) {
     e.preventDefault();
     setLoading(true);
     setError(null);
-    setMessage('go eat');
+    setMessage(null);
 
-    // const body = {
-    //   order: attachNamesAndPrices(order, pizzas),
-    //   total: formatMoney(calculateOrderTotal(order, pizzas)),
-    //   name: values.name,
-    //   email: values.email,
-    // };
+    const body = {
+      order: attachNamesAndPrices(order, pizzas),
+      total: formatMoney(calculateOrderTotal(order, pizzas)),
+      name: values.name,
+      email: values.email,
+    };
 
-    // const res = await fetch(`${process.env.GATSBY_SERVELESS_BASE}/placeOrder`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(body),
-    // });
+    console.log(process.env.GATSBY_SERVERLESS_BASE);
 
-    // const text = await res.json();
+    const res = await fetch(
+      `${process.env.GATSBY_SERVERLESS_BASE}/placeOrder`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+      }
+    );
 
-    // console.log(text);
+    const text = await res.json();
 
-    // if (res.status >= 400 && res.status < 600) {
-    //   setLoading(false);
-    //   setError(text.message);
-    // } else {
-    //   setLoading(false);
-    //   setMessage('Success! Come down for your pizza!!!');
-    // }
+    console.log(text);
+
+    if (res.status >= 400 && res.status < 600) {
+      setLoading(false);
+      setError(text.message);
+    } else {
+      setLoading(false);
+      setMessage('Success! Come down for your pizza!!!');
+    }
   };
 
   return {
